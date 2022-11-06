@@ -1,7 +1,7 @@
 {
-  "name": "template-ts-basic",
+  "name": "template-ts",
   "version": "1.0.0",
-  "description": "basic typescript template",
+  "description": "typescript template",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "type": "module",
