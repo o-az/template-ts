@@ -2,31 +2,41 @@
   "name": "template-ts-basic",
   "version": "1.0.0",
   "description": "basic typescript template",
-  "main": "src/index.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "type": "module",
   "scripts": {
-    "run-file": "ts-node --project ./tsconfig.json"
+    "run-file": "node --experimental-import-meta-resolve --experimental-network-imports --experimental-wasm-modules --experimental-specifier-resolution=node --no-warnings --loader ts-node/esm",
+    "build": "pnpm exec tsc --build tsconfig.json",
+    "lint": "pnpm exec -- eslint --fix --ext .ts src",
+    "format": "pnpm exec -- prettier --write --ignore-path .gitignore \"**/*.{ts,js,json,md}\"",
+    "clean": "rm -rf dist",
+    "reinstall-all": "rm -rf node_modules && pnpm upgrade --latest"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@swc/core": "^1.3.11",
+    "@swc/core": "^1.3.14",
     "@swc/helpers": "^0.4.12",
-    "@tsconfig/node18-strictest-esm": "^1.0.1",
-    "@types/eslint": "^8.4.9",
+    "@types/eslint": "^8.4.10",
     "@types/node": "^18.11.9",
     "@types/prettier": "^2.7.1",
     "bun-types": "^0.2.2",
-    "eslint": "^8.26.0",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.27.0",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
+    "@tsconfig/node18-strictest-esm": "^1.0.1",
     "typescript": "^4.8.4"
   },
   "engines": {
-    "node": ">=18.12.0",
+    "node": ">=18.12.1",
     "pnpm": ">=7.14.0"
   },
-  "keywords": ["typescript", "template", "esm", "pnpm"],
   "author": "Omar Aziz <github@omaraziz.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/o-az/template-ts-basic.git"
+  },
+  "keywords": ["typescript", "template", "esm", "pnpm"],
   "license": "ISC"
 }
