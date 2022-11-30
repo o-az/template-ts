@@ -1,24 +1,29 @@
 {
+  "schema": "https://json.schemastore.org/tsconfig.json",
+  "display": "Default",
   "extends": "@tsconfig/node18-strictest-esm/tsconfig.json",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "NodeNext",
-    "lib": ["dom", "DOM.Iterable", "ESNext"],
-    "types": ["node"],
+    "lib": ["dom", "DOM.Iterable", "ESNext", "WebWorker"],
     "strict": true,
     "rootDir": ".",
     "outDir": "dist",
+    "types": ["node"],
     "declaration": true,
     "skipLibCheck": true,
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
+    "noUnusedLocals": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "strictNullChecks": true,
     "noImplicitReturns": true,
     "resolveJsonModule": true,
+    "noUnusedParameters": true,
+    "experimentalDecorators": true,
     "useDefineForClassFields": true,
     "noUncheckedIndexedAccess": true,
     "importsNotUsedAsValues": "remove",
@@ -27,13 +32,24 @@
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "noPropertyAccessFromIndexSignature": true
+    "noPropertyAccessFromIndexSignature": true,
+
+    "plugins": [
+      {
+        "name": "typescript-eslint-language-service"
+      }
+    ]
   },
   "include": ["src", "./environment.d.ts", "./package.json", "./tsconfig.json"],
+  "exclude": ["node_modules", "test", ".scratch"],
   "ts-node": {
     "esm": true,
     "swc": true,
+    "skipIgnore": true,
     "transpileOnly": true,
+    "experimentalResolver": true,
+    "experimentalReplAwait": true,
+    "experimentalSpecifierResolution": "node",
     "require": ["tsconfig-paths/register"]
   }
 }

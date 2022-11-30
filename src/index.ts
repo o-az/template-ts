@@ -24,7 +24,7 @@ console.log({ cjs: cjs.hello, esm: esm.hello });
  * Supports Webassembly (.wasm) import and execution
  */
 import * as Wasm from './examples/add.wasm';
-console.log(Wasm.add(1, 2));
+console.log(`\nWasm.add(1, 2) = ${Wasm.add(1, 2)}`);
 
 /**
  * Supports data:imports and import assertions

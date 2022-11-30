@@ -1,5 +1,7 @@
 ### TypeScript / Node.js Template
-___
+
+---
+
 #### ESLint, Prettier, strictest tsconfig and simple build setup
 
 Requires [latest Node.js LTS version: v18.12.1](https://nodejs.org/en/blog/release/v18.12.1/),
@@ -7,7 +9,6 @@ Requires [latest Node.js LTS version: v18.12.1](https://nodejs.org/en/blog/relea
 ##### - `CommonJS` and `ESM` support, importable in `ESM` syntax ([lines 15-21](./src/index.ts)),
 
 ##### - `WebAssembly` import and execution ([lines 23-27](./src/index.ts)),
-
 
 ##### - `data:imports` and import assertions ([lines 29-36](./src/index.ts)),
 
