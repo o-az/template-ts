@@ -25,16 +25,6 @@ console.log({ cjs: cjs.hello, esm: esm.hello });
  */
 import * as Wasm from './examples/add.wasm';
 console.log(`\nWasm.add(1, 2) = ${Wasm.add(1, 2)}`);
-
-/**
- * Supports data:imports and import assertions
- */
-// This will be the first thing to log
-import 'data:text/javascript,console.log("hello!");';
-//@ts-ignore
-import _ from 'data:application/json,"world!"' assert { type: 'json' };
-console.log({ '\nimport _ from data:application/json,"world!"': _ });
-
 /**
  * Supports import.meta.resolve
  */
