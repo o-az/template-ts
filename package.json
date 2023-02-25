@@ -24,7 +24,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "eslint --fix . --ext js,cjs,mjs,ts,json --cache",
-    "format": "prettier . --ignore-path .eslintignore --list-different --ignore-unknown",
+    "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown",
     "clean": "rm -rf dist",
     "js": "node --loader @esbuild-kit/esm-loader",
     "ts": "node --loader ts-node/esm"
@@ -57,14 +57,6 @@
   },
   "author": "Omar Aziz <github@omaraziz.dev>",
   "repository": "o-az:template-ts",
-  "keywords": [
-    "typescript",
-    "template",
-    "esm",
-    "cjs",
-    "pnpm",
-    "node",
-    "vitest"
-  ],
+  "keywords": ["typescript", "template", "esm", "cjs", "pnpm", "node", "vitest"],
   "license": "MIT"
 }

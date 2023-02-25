@@ -16,14 +16,7 @@
   "eslint.format.enable": true,
   "eslint.alwaysShowStatus": true,
   "eslint.packageManager": "pnpm",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "markdown",
-    "mdx"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "markdown", "mdx"],
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableCommitSigning": true
