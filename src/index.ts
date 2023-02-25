@@ -1,7 +1,7 @@
 import { myArray } from './utilities'
 import http from 'node:http'
 
-const { PORT = 3000 } = process.env
+const { PORT = 3004 } = process.env
 
 export type Server = http.Server<typeof http.IncomingMessage, typeof http.ServerResponse>
 

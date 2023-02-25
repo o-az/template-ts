@@ -35,7 +35,6 @@ export default defineConfig({
   // you can have multiple entry files. See https://tsup.egoist.dev/#multiple-entrypoints
   entry: ['./src/index.ts'],
   sourcemap: IS_DEVELOPMENT,
-  tsconfig: 'tsconfig.json',
   outExtension: ({ format }) => ({ js: `.${format === 'cjs' ? 'cjs' : 'mjs'}` }),
   onSuccess: async () => {
     const indexJS = `export * from './index.mjs'`

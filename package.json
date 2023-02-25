@@ -26,11 +26,9 @@
     "lint": "eslint --fix . --ext js,cjs,mjs,ts,json --cache",
     "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown",
     "clean": "rm -rf dist",
-    "js": "node --loader @esbuild-kit/esm-loader",
     "ts": "node --loader ts-node/esm"
   },
   "devDependencies": {
-    "@esbuild-kit/esm-loader": "^2.5.5",
     "@tsconfig/node18-strictest-esm": "^1.0.1",
     "@types/eslint": "^8.21.1",
     "@types/node": "^18.14.1",

@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@esbuild-kit/esm-loader': ^2.5.5
   '@tsconfig/node18-strictest-esm': ^1.0.1
   '@types/eslint': ^8.21.1
   '@types/node': ^18.14.1
@@ -20,7 +19,6 @@ specifiers:
   vitest: ^0.28.5
 
 devDependencies:
-  '@esbuild-kit/esm-loader': 2.5.5
   '@tsconfig/node18-strictest-esm': 1.0.1
   '@types/eslint': 8.21.1
   '@types/node': 18.14.1
@@ -66,20 +64,6 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
-    dev: true
-
-  /@esbuild-kit/core-utils/3.1.0:
-    resolution: {integrity: sha512-Uuk8RpCg/7fdHSceR1M6XbSZFSuMrxcePFuGgyvsBn+u339dk5OeL4jv2EojwTN2st/unJGsVm4qHWjWNmJ/tw==}
-    dependencies:
-      esbuild: 0.17.10
-      source-map-support: 0.5.21
-    dev: true
-
-  /@esbuild-kit/esm-loader/2.5.5:
-    resolution: {integrity: sha512-Qwfvj/qoPbClxCRNuac1Du01r9gvNOT+pMYtJDapfB1eoGN1YlJ1BixLyL9WVENRx5RXgNLdfYdx/CuswlGhMw==}
-    dependencies:
-      '@esbuild-kit/core-utils': 3.1.0
-      get-tsconfig: 4.4.0
     dev: true
 
   /@esbuild/android-arm/0.16.17:
@@ -1462,10 +1446,6 @@ packages:
   /get-stream/6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
-    dev: true
-
-  /get-tsconfig/4.4.0:
-    resolution: {integrity: sha512-0Gdjo/9+FzsYhXCEFueo2aY1z1tpXrxWZzP7k8ul9qt1U5o8rYJwTJYmaeHdrVosYIVYkOy2iwCJ9FdpocJhPQ==}
     dev: true
 
   /glob-parent/5.1.2:
