@@ -1,8 +1,15 @@
-import * as Everything from '../dist/index'
-import { describe, it } from 'node:test'
+import { expect, expectTypeOf, it, test } from 'vitest'
+import * as Everything from '../src/utilities'
+import { type Server, server } from '../src/index'
 
-describe('Everything', () => {
+test('Everything', () => {
   it('should export helloWorld', () => {
-    console.assert('helloWorld' in Everything)
+    expect(Everything.myArray).toEqual(['hello', 'world'])
+  })
+})
+
+test('server type', () => {
+  it('should be a Server', () => {
+    expectTypeOf(server).toEqualTypeOf<Server>()
   })
 })
