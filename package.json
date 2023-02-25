@@ -62,7 +62,9 @@
     "template",
     "esm",
     "cjs",
-    "pnpm"
+    "pnpm",
+    "node",
+    "vitest"
   ],
   "license": "MIT"
 }
