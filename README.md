@@ -1,6 +1,6 @@
 # TypeScript / Node.js Template
 
-------*Requires [latest Node.js LTS version: v18.14.2](https://nodejs.org/en/blog/release/v18.14.2/) and [pnpm](https://pnpm.io/installation) v7 or higher*-----
+------*Requires [latest `Node.js` LTS version: v18.14.2](https://nodejs.org/en/blog/release/v18.14.2/) and [`pnpm` v7 or higher](https://pnpm.io/installation)*-----
 
 ___
 
@@ -49,15 +49,15 @@ pnpm start # or pnpm dev
 docker build --file ./Dockerfile . --progress=plain --tag my_project
 #
 # Run container
-docker run --privileged --publish 3004:3004 --rm -it --detach --name my_project my_project
+docker run --publish 3004:3004 --rm -it --detach --name my_project my_project
 #
 # Open browser at http://localhost:3004
 #
 # Get inside container
-docker exec --privileged -it final /bin/sh
+docker exec -it my_project /bin/sh
 ```
 
-## Publish package to npm registry and GitHub Packages Registry, and push container image to Docker Hub and GitHub Container Registry
+## Publish Package & Image
 
 ```bash
 pnpm release
@@ -65,5 +65,3 @@ pnpm release
 # select version, it will create git tags and push to remote.
 # This will trigger `publish` workflow in GitHub Actions.
 ```
-
-I recommend using [`bumpp`](https://github.com/antfu/bumpp) for versioning.
