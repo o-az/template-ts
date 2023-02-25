@@ -1,19 +1,15 @@
-### TypeScript / Node.js Template
+# TypeScript / Node.js Template
 
----
+### Requires [latest Node.js LTS version: v18.14.2](https://nodejs.org/en/blog/release/v18.14.2/).
 
-#### ESLint, Prettier, strictest tsconfig and simple build setup
+#### - `TypeScript`
 
-Requires [latest Node.js LTS version: v18.12.1](https://nodejs.org/en/blog/release/v18.12.1/),
+#### - `pnpm` package manager
 
-##### - `CommonJS` and `ESM` support, importable in `ESM` syntax ([lines 15-21](./src/index.ts)),
+#### - `vitest` test runner
 
-##### - `WebAssembly` import and execution ([lines 23-27](./src/index.ts)),
+#### - `CommonJS` and `ESM` support
 
-##### - `data:imports` and import assertions ([lines 29-36](./src/index.ts)),
+#### - `ESLint` & `Prettier`
 
-##### - `import.meta.resolve` ([lines 38-43](./src/index.ts)),
-
-##### - Top level await ([lines 45-51](./src/index.ts)).
-
-See examples in **[./src/index.ts](./src/index.ts)**.
+#### - `CI` with `GitHub Actions`

@@ -5,13 +5,10 @@
   "compilerOptions": {
     "strict": true,
     "checkJs": true,
-    "sourceMap": true,
     "target": "ESNext",
     "module": "ESNext",
-    "declaration": true,
+    "moduleResolution": "Node",
     "alwaysStrict": true,
-    "inlineSources": true,
-    "declarationMap": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "noImplicitReturns": true,
@@ -25,8 +22,6 @@
     "allowSyntheticDefaultImports": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "forceConsistentCasingInFileNames": true,
-    "rootDir": ".",
-    "outDir": "dist",
     "types": ["node"],
     "skipLibCheck": true,
     "noImplicitAny": true,
@@ -34,11 +29,15 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "noUnusedParameters": true,
-    "experimentalDecorators": true,
-    "noPropertyAccessFromIndexSignature": true
+    "noPropertyAccessFromIndexSignature": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src", "./environment.d.ts", "./package.json", "./tsconfig.json"],
-  "exclude": ["node_modules", "test", ".scratch"],
+  "include": ["src", "./environment.d.ts", "./tsup.config.ts"],
+  "exclude": ["node_modules", "test", ".scratch", "dist"],
   "ts-node": {
     "esm": true,
     "skipIgnore": true,

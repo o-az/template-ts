@@ -1,10 +1,30 @@
 {
+  "npm.packageManager": "pnpm",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.preferences.quoteStyle": "single",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
   "eslint.options": {
-    "extensions": [".js", ".md", ".mdx", ".ts", ".tsx", "json"]
+    "extensions": [".js", ".md", ".mdx", ".ts", ".tsx", ".json"]
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.packageManager": "pnpm",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "markdown",
+    "mdx"
+  ],
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableCommitSigning": true
 }

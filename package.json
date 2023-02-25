@@ -2,48 +2,58 @@
   "name": "template-ts",
   "version": "1.0.0",
   "description": "typescript template",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
   "exports": {
-    ".": "./dist/src/index.js",
-    "./package.json": "./package.json"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs",
+      "node": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json",
+    "./README.md": "./README.md"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/src/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "pnpm exec tsc --build tsconfig.json",
-    "postbuild": "cp src/**/*.wasm dist/src/examples/",
-    "lint": "eslint --fix . --ext .js,.cjs,.mjs,.ts --cache",
-    "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown",
+    "dev": "tsup --watch --onSuccess 'node ./dist/index.mjs'",
+    "start": "node ./dist/index.mjs",
+    "build": "tsup --config ./tsup.config.ts",
+    "lint": "eslint --fix . --ext js,cjs,mjs,ts,json --cache",
+    "format": "prettier . --ignore-path .eslintignore --list-different --ignore-unknown",
     "clean": "rm -rf dist",
-    "js": "node --experimental-import-meta-resolve --experimental-network-imports --experimental-wasm-modules --experimental-vm --no-warnings --loader @esbuild-kit/esm-loader",
-    "ts": "node --experimental-import-meta-resolve --experimental-network-imports --experimental-wasm-modules --no-warnings --loader ts-node/esm"
+    "js": "node --loader @esbuild-kit/esm-loader",
+    "ts": "node --loader ts-node/esm"
   },
   "devDependencies": {
-    "@esbuild-kit/esm-loader": "^2.5.4",
+    "@esbuild-kit/esm-loader": "^2.5.5",
     "@tsconfig/node18-strictest-esm": "^1.0.1",
-    "@types/node": "^18.11.18",
-    "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "bun-types": "^0.4.0",
+    "@types/eslint": "^8.21.1",
+    "@types/node": "^18.14.1",
+    "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
     "dotenv": "^16.0.3",
-    "eslint": "^8.31.0",
+    "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-unicorn": "^45.0.2",
-    "prettier": "^2.8.2",
+    "prettier": "^2.8.4",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
-    "tsup": "^6.5.0",
-    "typescript": "^4.9.4"
+    "tsup": "^6.6.3",
+    "typescript": "^4.9.5"
   },
+  "packageManager": "pnpm@7.27.1",
   "engines": {
     "node": ">=18",
-    "pnpm": ">=7.0.0"
+    "pnpm": ">=7.0.0",
+    "npm": "\n\n\n>>> use pnpm instead <<<\n\n\n",
+    "yarn": "\n\n\n>>> use pnpm instead <<<\n\n\n"
   },
   "author": "Omar Aziz <github@omaraziz.dev>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/o-az/template-ts-basic.git"
-  },
-  "keywords": ["typescript", "template", "esm", "pnpm"],
-  "license": "ISC"
+  "repository": "o-az:template-ts",
+  "keywords": ["typescript", "template", "esm", "cjs", "pnpm"],
+  "license": "MIT"
 }

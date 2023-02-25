@@ -1,4 +1,4 @@
-/** @type {import('eslint').Linter.BaseConfig} */
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
   extends: ['plugin:unicorn/all'],
   parser: '@typescript-eslint/parser',
@@ -12,6 +12,7 @@ module.exports = {
     browser: true,
   },
   rules: {
+    'unicorn/prefer-top-level-await': ['off'],
     'unicorn/prefer-event-target': ['off'],
     'unicorn/prevent-abbreviations': [
       'error',
@@ -62,4 +63,4 @@ module.exports = {
       },
     ],
   },
-};
+}

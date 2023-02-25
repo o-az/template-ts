@@ -1,41 +1,11 @@
-/**
- * These are examples to demonstrate some features of this template.
- * All can safely be deleted.
- *
- * Run this file with `pnpm run-file src/index.ts` from project root
- *
- */
+import { myArray } from './utilities'
+import http from 'node:http'
 
-/**
- * dotenv support
- */
-import 'dotenv/config';
-console.log({ 'process.env.NODE_ENV': process.env.NODE_ENV });
+const { PORT = 3000 } = process.env
 
-/**
- * Supports importing from CommonJS and ESM
- */
-import cjs from './examples/commonjs.cjs';
-import * as esm from './examples/esm.mjs';
-console.log('\n');
-console.log({ cjs: cjs.hello, esm: esm.hello });
+const server = http.createServer((_, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/plain' })
+  response.end(myArray.join(' '))
+})
 
-/**
- * Supports Webassembly (.wasm) import and execution
- */
-import * as Wasm from './examples/add.wasm';
-console.log(`\nWasm.add(1, 2) = ${Wasm.add(1, 2)}`);
-/**
- * Supports import.meta.resolve
- */
-const dependencyAsset = await import.meta.resolve?.('./examples/data.json', import.meta.url);
-console.log('\n');
-console.log({ dependencyAsset });
-
-/**
- * Supports top level await
- */
-const requestJsonPost = await fetch('https://jsonplaceholder.typicode.com/posts/1');
-const jsonPost = await requestJsonPost.json();
-console.log('\n');
-console.log({ jsonPost });
+server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}/`))
