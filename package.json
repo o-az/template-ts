@@ -12,10 +12,9 @@
       "require": "./dist/index.cjs",
       "default": "./dist/index.mjs",
       "node": "./dist/index.cjs"
-    },
-    "./package.json": "./package.json",
-    "./README.md": "./README.md"
+    }
   },
+  "files": ["dist"],
   "type": "module",
   "scripts": {
     "dev": "tsup --watch --onSuccess 'node ./dist/index.mjs'",
@@ -26,6 +25,9 @@
     "lint": "eslint --fix . --ext js,cjs,mjs,ts,json --cache",
     "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown",
     "clean": "rm -rf dist",
+    "release": "pnpx bumpp package.json --commit --push --tag",
+    "prerelease": "pnpm build",
+    "prepublishOnly": "pnpm build",
     "ts": "node --loader ts-node/esm"
   },
   "devDependencies": {
@@ -52,6 +54,10 @@
     "pnpm": ">=7.0.0",
     "npm": "\n\n\n>>> use pnpm instead <<<\n\n\n",
     "yarn": "\n\n\n>>> use pnpm instead <<<\n\n\n"
+  },
+  "publishConfig": {
+    "access": "public",
+    "github-package-registry": "https://npm.pkg.github.com"
   },
   "author": "Omar Aziz <github@omaraziz.dev>",
   "repository": "o-az:template-ts",

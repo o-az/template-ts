@@ -9,7 +9,6 @@ COPY . .
 
 RUN apk --no-cache update && \
   apk --no-cache upgrade && \
-  apk --no-cache add bash && \
   npx --yes pnpm add --global pnpm@latest && \
   pnpm install --frozen-lockfile && \
   pnpm build

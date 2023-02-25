@@ -2,6 +2,7 @@
 module.exports = {
   extends: ['plugin:unicorn/all'],
   parser: '@typescript-eslint/parser',
+  ignorePatterns: ['**/dist/**'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
