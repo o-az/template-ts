@@ -1,52 +1,52 @@
 {
-  "name": "template-ts",
+  "name": "node-typescript-template",
   "version": "1.0.0",
-  "description": "typescript template",
+  "description": "A template for Node.js projects using TypeScript, ESM, CJS, Pnpm, and Vitest",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "require": "./dist/index.cjs",
-      "default": "./dist/index.mjs",
+      "default": "./dist/index.js",
       "node": "./dist/index.cjs"
     }
   },
   "files": ["dist"],
   "type": "module",
   "scripts": {
-    "dev": "tsup --watch --onSuccess 'node ./dist/index.mjs'",
-    "start": "node ./dist/index.mjs",
-    "build": "tsup --config ./tsup.config.ts",
+    "dev": "tsup --watch --onSuccess 'node ./dist/index.js'",
+    "start": "node ./dist/index.js",
+    "build": "NODE_ENV=production tsup --config ./tsup.config.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
+    "test:typecheck": "tsc --noEmit",
     "lint": "eslint --fix . --ext js,cjs,mjs,ts,json --cache",
     "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown",
     "clean": "rm -rf dist",
     "release": "pnpx bumpp package.json --commit --push --tag",
     "prerelease": "pnpm build",
-    "prepublishOnly": "pnpm build",
-    "ts": "node --loader ts-node/esm"
+    "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
-    "@tsconfig/node18-strictest-esm": "^1.0.1",
     "@types/eslint": "^8.21.1",
     "@types/node": "^18.14.1",
     "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "dotenv": "^16.0.3",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-unicorn": "^45.0.2",
     "prettier": "^2.8.4",
     "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.1.2",
     "tsup": "^6.6.3",
     "typescript": "^4.9.5",
-    "vitest": "^0.28.5"
+    "vitest": "^0.29.1"
   },
   "packageManager": "pnpm@7.27.1",
   "engines": {

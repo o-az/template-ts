@@ -196,8 +196,3 @@ tsconfig.tsbuildinfo
 .DS_Store
 tmp
 temp
-packages/graphql-config/src/dist
-# !packages/graphql-config/dist
-tsconfig.build.tsbuildinfo
-packages/graphql-config/src/generated
-.svelte-kit

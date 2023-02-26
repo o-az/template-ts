@@ -10,14 +10,27 @@
     "source.fixAll.eslint": true
   },
   "eslint.options": {
-    "extensions": [".js", ".md", ".mdx", ".ts", ".tsx", ".json"]
+    "extensions": [
+      ".js",
+      ".cjs",
+      ".mjs",
+      ".jsx",
+      ".ts",
+      ".cts",
+      ".mts",
+      ".tsx",
+      ".d.ts",
+      ".d.cts",
+      ".d.mts",
+      ".md",
+      ".mdx",
+      ".json"
+    ]
   },
   "eslint.enable": true,
   "eslint.format.enable": true,
-  "eslint.alwaysShowStatus": true,
   "eslint.packageManager": "pnpm",
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "markdown", "mdx"],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "markdown"],
   "git.autofetch": true,
-  "git.confirmSync": false,
   "git.enableCommitSigning": true
 }

@@ -1,4 +1,4 @@
-name: Publish Docker Image
+name: Publish Image & Package
 
 permissions:
   contents: 'write'
@@ -50,6 +50,7 @@ jobs:
           images: |
             ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}
             ghcr.io/${{ github.repository }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker images
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
@@ -117,3 +118,22 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pnpm publish --access public --registry https://npm.pkg.github.com
+
+  # Generate GitHub Release Changelog
+  Changelog:
+    # make sure we're on 'main' branch
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+      - name: Generate Changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx changelogithub

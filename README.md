@@ -65,3 +65,9 @@ pnpm release
 # select version, it will create git tags and push to remote.
 # This will trigger `publish` workflow in GitHub Actions.
 ```
+
+## Run a one-off TypeScript file
+
+```bash
+pnpm ts-node <path/to/file>.ts
+```

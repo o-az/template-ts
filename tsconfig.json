@@ -1,7 +1,6 @@
 {
   "schema": "https://json.schemastore.org/tsconfig.json",
   "display": "Default",
-  "extends": "@tsconfig/node18-strictest-esm/tsconfig.json",
   "compilerOptions": {
     "strict": true,
     "checkJs": true,
@@ -11,14 +10,11 @@
     "alwaysStrict": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "noImplicitReturns": true,
     "resolveJsonModule": true,
-    "noImplicitOverride": true,
     "useDefineForClassFields": true,
     "importsNotUsedAsValues": "error",
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": true,
-    "exactOptionalPropertyTypes": false,
     "allowSyntheticDefaultImports": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "forceConsistentCasingInFileNames": true,
@@ -28,23 +24,18 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "noUnusedParameters": true,
     "noPropertyAccessFromIndexSignature": true,
     "outDir": "dist",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "baseUrl": "."
   },
-  "include": ["src", "./environment.d.ts", "./tsup.config.ts"],
-  "exclude": ["node_modules", "test", ".scratch", "dist"],
+  "include": ["src", "environment.d.ts", "tsup.config.ts", "vitest.config.ts", "test"],
+  "exclude": ["node_modules", ".scratch", "dist"],
   "ts-node": {
     "esm": true,
     "skipIgnore": true,
     "transpileOnly": true,
     "experimentalResolver": true,
     "experimentalReplAwait": true,
-    "experimentalSpecifierResolution": "node",
-    "require": ["tsconfig-paths/register"]
+    "experimentalSpecifierResolution": "node"
   }
 }

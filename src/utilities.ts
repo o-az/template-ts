@@ -1,1 +1,1 @@
-export const myArray = ['hello', 'world']
+export const myArray = ['hello', 'world!']

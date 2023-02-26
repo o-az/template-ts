@@ -1,6 +1,6 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
-  extends: ['plugin:unicorn/all'],
+  extends: ['plugin:security/recommended', 'plugin:unicorn/all'],
   parser: '@typescript-eslint/parser',
   ignorePatterns: ['**/dist/**'],
   parserOptions: {
