@@ -11,31 +11,23 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
-    "useDefineForClassFields": true,
     "importsNotUsedAsValues": "error",
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "forceConsistentCasingInFileNames": true,
     "types": ["node"],
     "skipLibCheck": true,
     "noImplicitAny": true,
-    "noImplicitThis": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "noPropertyAccessFromIndexSignature": true,
     "outDir": "dist",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
   "include": ["src", "environment.d.ts", "tsup.config.ts", "vitest.config.ts", "test"],
-  "exclude": ["node_modules", ".scratch", "dist"],
-  "ts-node": {
-    "esm": true,
-    "skipIgnore": true,
-    "transpileOnly": true,
-    "experimentalResolver": true,
-    "experimentalReplAwait": true,
-    "experimentalSpecifierResolution": "node"
-  }
+  "exclude": ["node_modules", ".scratch", "dist"]
 }

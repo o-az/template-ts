@@ -5,13 +5,4 @@ module.exports = {
   endOfLine: 'auto',
   singleQuote: true,
   arrowParens: 'avoid',
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      options: {
-        parser: 'typescript',
-      },
-    },
-    { files: ['*.json'], options: { parser: 'json' } },
-  ],
 }

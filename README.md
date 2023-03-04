@@ -1,8 +1,9 @@
 # TypeScript / Node.js Template
 
-------*Requires [latest `Node.js` LTS version: v18.14.2](https://nodejs.org/en/blog/release/v18.14.2/) and [`pnpm` v7 or higher](https://pnpm.io/installation)*-----
+------_Requires [latest `Node.js` LTS version: v18.14.2](https://nodejs.org/en/blog/release/v18.14.2/) and
+[`pnpm` v7 or higher](https://pnpm.io/installation)_-----
 
-___
+---
 
 ## **Stack**
 
@@ -22,7 +23,7 @@ ___
 
 ### - `VSCode` ready (see `.vscode`)
 
-___
+---
 
 ## Getting started
 
@@ -34,11 +35,18 @@ git clone https://github.com/o-az/template-ts.git && cd template-ts
 # Install dependencies
 pnpm install
 #
-# Build
-pnpm build
+# Run development server
+pnpm dev
 #
-# Run
-pnpm start # or pnpm dev
+# run tests
+pnpm test
+#
+# run build and start production server
+pnpm build && pnpm start
+#
+# to run a one-off TypeScript file
+pnpm ts <path/to/file>.ts
+# or `pnpm tsx <path/to/file>.ts`
 ```
 
 ## Docker
@@ -64,10 +72,4 @@ pnpm release
 #
 # select version, it will create git tags and push to remote.
 # This will trigger `publish` workflow in GitHub Actions.
-```
-
-## Run a one-off TypeScript file
-
-```bash
-pnpm ts-node <path/to/file>.ts
 ```

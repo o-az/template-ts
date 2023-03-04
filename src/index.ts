@@ -1,13 +1,8 @@
-import { myArray } from './utilities'
-import http from 'node:http'
+import 'dotenv/config'
+import { server } from '~/server'
 
-const { PORT = 3004 } = process.env
+export const { PORT = 3004 } = process.env
 
-export type Server = http.Server<typeof http.IncomingMessage, typeof http.ServerResponse>
-
-export const server: Server = http.createServer((_, response) => {
-  response.writeHead(200, { 'Content-Type': 'text/plain' })
-  response.end(myArray.join(' '))
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}/`)
 })
-
-server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}/`))

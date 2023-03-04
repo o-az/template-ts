@@ -2,55 +2,58 @@
   "name": "node-typescript-template",
   "version": "1.0.0",
   "description": "A template for Node.js projects using TypeScript, ESM, CJS, Pnpm, and Vitest",
+  "repository": "github:o-az/template-ts",
+  "type": "module",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.js",
+  "source": "./src/index.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs",
-      "default": "./dist/index.js",
-      "node": "./dist/index.cjs"
+      "source": "./src/index.ts"
     }
   },
-  "files": ["dist"],
-  "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "tsup --watch --onSuccess 'node ./dist/index.js'",
-    "start": "node ./dist/index.js",
-    "build": "NODE_ENV=production tsup --config ./tsup.config.ts",
+    "start": "NODE_ENV='production' node ./dist/index.js",
+    "build": "NODE_ENV='production' tsup --config ./tsup.config.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:typecheck": "tsc --noEmit",
     "lint": "eslint --fix . --ext js,cjs,mjs,ts,json --cache",
     "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown",
-    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
     "release": "pnpx bumpp package.json --commit --push --tag",
     "prerelease": "pnpm build",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "pnpm build",
+    "clean": "rm -rf dist",
+    "ts": "tsx"
   },
   "devDependencies": {
-    "@types/eslint": "^8.21.1",
-    "@types/node": "^18.14.1",
+    "@types/node": "^18.14.6",
     "@types/prettier": "^2.7.2",
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
-    "@typescript-eslint/parser": "^5.53.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
     "dotenv": "^16.0.3",
-    "eslint": "^8.34.0",
+    "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-security": "^1.7.1",
-    "eslint-plugin-unicorn": "^45.0.2",
+    "eslint-plugin-unicorn": "^46.0.0",
     "prettier": "^2.8.4",
-    "ts-node": "^10.9.1",
     "tsup": "^6.6.3",
+    "tsx": "^3.12.3",
     "typescript": "^4.9.5",
-    "vitest": "^0.29.1"
+    "vitest": "^0.29.2"
   },
-  "packageManager": "pnpm@7.27.1",
+  "packageManager": "pnpm@7.28.0",
   "engines": {
-    "node": ">=18",
+    "node": ">=16",
     "pnpm": ">=7.0.0",
     "npm": "\n\n\n>>> use pnpm instead <<<\n\n\n",
     "yarn": "\n\n\n>>> use pnpm instead <<<\n\n\n"
@@ -59,8 +62,16 @@
     "access": "public",
     "github-package-registry": "https://npm.pkg.github.com"
   },
-  "author": "Omar Aziz <github@omaraziz.dev>",
-  "repository": "o-az:template-ts",
-  "keywords": ["typescript", "template", "esm", "cjs", "pnpm", "node", "vitest"],
+  "homepage": "https://github.com/o-az/template-ts#readme",
+  "author": "Omar Aziz <omaraziz.dev@gmail.com> (https://github.com/o-az)",
+  "keywords": [
+    "typescript",
+    "node.js",
+    "esm",
+    "cjs",
+    "pnpm",
+    "vitest",
+    "template"
+  ],
   "license": "MIT"
 }

@@ -47,10 +47,11 @@ jobs:
           pnpm format
           pnpm lint
 
+      - name: Typecheck
+        run: pnpm typecheck
+
       - name: Build
         run: pnpm build
 
       - name: Test
-        run: |
-          pnpm test:typecheck
-          pnpm test
+        run: pnpm test

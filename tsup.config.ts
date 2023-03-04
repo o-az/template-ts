@@ -1,7 +1,5 @@
 import { defineConfig } from 'tsup'
 
-const { NODE_ENV = 'development' } = process.env
-
 export default defineConfig({
   dts: true,
   // clean the output directory before building
@@ -15,5 +13,4 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   // you can have multiple entry files. See https://tsup.egoist.dev/#multiple-entrypoints
   entry: ['./src/index.ts'],
-  onSuccess: async () => console.log(`\n\nBuild completed - [${NODE_ENV}] mode.\n\n`),
 })

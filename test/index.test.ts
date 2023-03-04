@@ -1,10 +1,19 @@
 import { expect, expectTypeOf, it, test } from 'vitest'
-import * as Everything from '../src/utilities'
-import { type Server, server } from '../src/index'
+import { type Server, server } from '~/server'
+import { PORT } from '~/index'
 
-test('Everything', () => {
-  it('should export helloWorld', () => {
-    expect(Everything.myArray).toEqual(['hello', 'world'])
+test('PORT', () => {
+  it('should be defined', () => {
+    expect(PORT).toBeDefined()
+  })
+
+  it('should be a number', () => {
+    expect(PORT).toBeTypeOf('number')
+  })
+
+  it('should be 4 digits', () => {
+    expect(PORT).toBeGreaterThanOrEqual(1000)
+    expect(PORT).toBeLessThanOrEqual(9999)
   })
 })
 
