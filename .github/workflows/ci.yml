@@ -4,7 +4,11 @@ permissions:
   contents: 'write'
 
 on:
+  pull_request:
   push:
+    branches:
+      # not 'main' branch
+      - '!main'
 
 defaults:
   run:
