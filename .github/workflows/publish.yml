@@ -6,8 +6,8 @@ permissions:
 
 on:
   push:
-    # tags:
-    #   - 'v*'
+    tags:
+      - 'v*'
 
 defaults:
   run:
@@ -203,8 +203,7 @@ jobs:
 
   # Generate GitHub Release Changelog
   Changelog:
-    # make sure tags have been pushed
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

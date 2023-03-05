@@ -84,3 +84,5 @@ pnpm release
 +  "start": "dotenv node ./dist/index.js"
 }
 ```
+
+## Lastly, you should modify the workflows in `.github/workflows` to suit your needs
