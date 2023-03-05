@@ -5,6 +5,9 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.quoteStyle": "single",
   "editor.formatOnSave": true,
+  "[json,jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },

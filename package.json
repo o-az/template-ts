@@ -1,10 +1,10 @@
 {
-  "name": "node-typescript-template",
+  "name": "@o-az/template-ts",
   "version": "1.0.0",
   "description": "A template for Node.js projects using TypeScript, ESM, CJS, Pnpm, and Vitest",
   "repository": "github:o-az/template-ts",
   "type": "module",
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.js",
   "source": "./src/index.ts",
@@ -21,8 +21,8 @@
   ],
   "scripts": {
     "dev": "tsup --watch --onSuccess 'node ./dist/index.js'",
-    "start": "NODE_ENV='production' node ./dist/index.js",
-    "build": "NODE_ENV='production' tsup --config ./tsup.config.ts",
+    "start": "node ./dist/index.js",
+    "build": "tsup --config ./tsup.config.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "eslint --fix . --ext js,cjs,mjs,ts,json --cache",
@@ -39,7 +39,7 @@
     "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
-    "dotenv": "^16.0.3",
+    "dotenv-cli": "^7.0.0",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -60,7 +60,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "github-package-registry": "https://npm.pkg.github.com"
+    "@o-az:registry": "https://npm.pkg.github.com"
   },
   "homepage": "https://github.com/o-az/template-ts#readme",
   "author": "Omar Aziz <omaraziz.dev@gmail.com> (https://github.com/o-az)",

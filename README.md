@@ -21,6 +21,8 @@
 
 ### - Docker-ready (see `Dockerfile`)
 
+### - Publish to `npm` registry, `GitHub Packages`, `Docker Hub` and `GitHub Container Registry` with `pnpm` (see `publish.yml`)
+
 ### - `VSCode` ready (see `.vscode`)
 
 ---
@@ -72,4 +74,13 @@ pnpm release
 #
 # select version, it will create git tags and push to remote.
 # This will trigger `publish` workflow in GitHub Actions.
+```
+
+## If you need to use `dotenv`, add `dotenv` to the beginning of a script. You don't need to import `dotenv` inside any file. Example
+
+```diff
+"scripts": {
+-  "start": "node ./dist/index.js"
++  "start": "dotenv node ./dist/index.js"
+}
 ```

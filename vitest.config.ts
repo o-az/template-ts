@@ -2,11 +2,11 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   resolve: {
-    /**
-     * Note how it's not identical to tsconfig.json paths.
-     * The below is equivalent to: `"~/*": ["./src/*"]` in tsconfig.json
-     */
     alias: {
+      /**
+       * Note how it's not identical to tsconfig.json paths.
+       * The below is equivalent to: `"~/*": ["./src/*"]` in tsconfig.json
+       */
       '~': './src',
     },
   },
