@@ -5,8 +5,11 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.quoteStyle": "single",
   "editor.formatOnSave": true,
-  "[json,jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
@@ -32,7 +35,13 @@
   "eslint.enable": true,
   "eslint.format.enable": true,
   "eslint.packageManager": "pnpm",
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "markdown"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "markdown"
+  ],
   "git.autofetch": true,
   "git.enableCommitSigning": true
 }

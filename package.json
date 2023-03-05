@@ -59,8 +59,7 @@
     "yarn": "\n\n\n>>> use pnpm instead <<<\n\n\n"
   },
   "publishConfig": {
-    "access": "public",
-    "@o-az:registry": "https://npm.pkg.github.com"
+    "access": "public"
   },
   "homepage": "https://github.com/o-az/template-ts#readme",
   "author": "Omar Aziz <omaraziz.dev@gmail.com> (https://github.com/o-az)",
