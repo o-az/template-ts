@@ -1,16 +1,10 @@
 {
-  "npm.packageManager": "pnpm",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.quoteStyle": "single",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features",
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features",
-  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -34,14 +28,7 @@
   },
   "eslint.enable": true,
   "eslint.format.enable": true,
-  "eslint.packageManager": "pnpm",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "markdown"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "markdown"],
   "git.autofetch": true,
   "git.enableCommitSigning": true
 }

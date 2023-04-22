@@ -196,3 +196,7 @@ tsconfig.tsbuildinfo
 .DS_Store
 tmp
 temp
+
+*.lock
+*.lock.yaml
+*.lock.yml

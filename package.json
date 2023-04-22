@@ -24,9 +24,8 @@
     "start": "node ./dist/index.js",
     "build": "tsup --config ./tsup.config.ts",
     "test": "vitest",
-    "test:ui": "vitest --ui",
-    "lint": "eslint --fix . --ext js,cjs,mjs,ts,json --cache",
-    "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown",
+    "lint": "eslint --fix . --ext js,cjs,mjs,jsx,ts,cts,mts,tsx,mdx,json --cache",
+    "format": "prettier . --ignore-path .eslintignore --write --ignore-unknown --cache",
     "typecheck": "tsc --noEmit",
     "release": "pnpx bumpp package.json --commit --push --tag",
     "prerelease": "pnpm build",
@@ -46,20 +45,17 @@
     "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-unicorn": "^46.0.0",
     "prettier": "^2.8.4",
+    "simple-git-hooks": "^2.8.1",
     "tsup": "^6.6.3",
     "tsx": "^3.12.3",
-    "typescript": "^4.9.5",
-    "vitest": "^0.29.2"
+    "typescript": "^5.0.4",
+    "vitest": "^0.30.1"
   },
-  "packageManager": "pnpm@7.28.0",
+  "simple-git-hooks": {
+    "pre-commit": "yarn && yarn lint && yarn format && yarn typecheck && yarn test --run && yarn build"
+  },
   "engines": {
-    "node": ">=16",
-    "pnpm": ">=7.0.0",
-    "npm": "\n\n\n>>> use pnpm instead <<<\n\n\n",
-    "yarn": "\n\n\n>>> use pnpm instead <<<\n\n\n"
-  },
-  "publishConfig": {
-    "access": "public"
+    "node": ">=18"
   },
   "homepage": "https://github.com/o-az/template-ts#readme",
   "author": "Omar Aziz <omaraziz.dev@gmail.com> (https://github.com/o-az)",

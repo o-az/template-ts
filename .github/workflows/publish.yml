@@ -21,7 +21,7 @@ env:
 
 jobs:
   test:
-        # run only on 'main' branch
+    # run only on 'main' branch
     if: github.ref == 'refs/heads/main'
     name: 'Lint, Type Check, Test, & Build'
     strategy:
@@ -131,7 +131,6 @@ jobs:
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-
 
   publish-npm:
     # run only on 'main' branch

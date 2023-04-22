@@ -1,5 +1,5 @@
 interface EnvironmentVariables {
-  readonly NODE_ENV: 'development' | 'ci' | 'production'
+  readonly NODE_ENV: 'development' | 'test' | 'production'
   readonly PORT: string
 }
 
