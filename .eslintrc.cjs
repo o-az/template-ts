@@ -1,3 +1,4 @@
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
   extends: ['plugin:security/recommended', 'plugin:unicorn/all'],
   parser: '@typescript-eslint/parser',

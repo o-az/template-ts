@@ -6,6 +6,7 @@
     "checkJs": true,
     "target": "ESNext",
     "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "moduleResolution": "bundler",
     "alwaysStrict": true,
     "esModuleInterop": true,
@@ -28,6 +29,7 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": ["src", "./environment.d.ts", "./tsup.config.ts", "./vitest.config.ts", "test"],
+  "include": ["src", "test"],
+  "files": ["./environment.d.ts", "./tsup.config.ts", "./vitest.config.ts", "./reset.d.ts"],
   "exclude": ["node_modules", ".scratch", "dist"]
 }
