@@ -3,33 +3,39 @@
   "display": "Default",
   "compilerOptions": {
     "strict": true,
+    "noEmit": true,
+    "allowJs": true,
     "checkJs": true,
     "target": "ESNext",
     "module": "ESNext",
+    "moduleResolution": "Bundler",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "moduleResolution": "bundler",
+    "skipLibCheck": true,
     "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
     "esModuleInterop": true,
     "isolatedModules": true,
+    "strictNullChecks": true,
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node"],
-    "skipLibCheck": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
     "noPropertyAccessFromIndexSignature": true,
-    "outDir": "dist",
+    "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "#*": ["./src/*"]
     }
   },
   "include": ["src", "test"],
-  "files": ["./environment.d.ts", "./tsup.config.ts", "./vitest.config.ts", "./reset.d.ts"],
+  "files": [
+    "./environment.d.ts",
+    "./tsup.config.ts",
+    "./vitest.config.ts",
+    "./reset.d.ts"
+  ],
   "exclude": ["node_modules", ".scratch", "dist"]
 }

@@ -1,6 +1,6 @@
 import { expect, expectTypeOf, it, test } from 'vitest'
-import { type Server, server } from '~/server'
-import { PORT } from '~/index'
+import { PORT } from '#index'
+import { type Server, server } from '#server'
 
 test('PORT', () => {
   it('should be defined', () => {
@@ -12,8 +12,8 @@ test('PORT', () => {
   })
 
   it('should be 4 digits', () => {
-    expect(PORT).toBeGreaterThanOrEqual(1000)
-    expect(PORT).toBeLessThanOrEqual(9999)
+    expect(PORT).toBeGreaterThanOrEqual(1_000)
+    expect(PORT).toBeLessThanOrEqual(9_999)
   })
 })
 

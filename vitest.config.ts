@@ -5,15 +5,12 @@ export default defineConfig({
     alias: {
       /**
        * Note how it's not identical to tsconfig.json paths.
-       * The below is equivalent to: `"~/*": ["./src/*"]` in tsconfig.json
+       * The below is equivalent to: `"#*": ["./src/*"]` in tsconfig.json
        */
-      '~': './src',
+      '#': './src',
     },
   },
   test: {
     threads: false,
-    deps: {
-      registerNodeLoader: true,
-    },
   },
 })

@@ -27,7 +27,27 @@
   },
   "eslint.enable": true,
   "eslint.format.enable": true,
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "markdown"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "markdown",
+    "json",
+    "jsonc",
+    "json5"
+  ],
   "git.autofetch": true,
-  "git.enableCommitSigning": true
+  "git.enableCommitSigning": true,
+  "search.exclude": {
+    "_": true,
+    ".eslintcache": true,
+    "pnpm-lock.yaml": true,
+    ".prettiercache": true,
+    "**/node_modules": true
+  },
+  "files.exclude": {
+    ".eslintcache": true,
+    ".prettiercache": true
+  }
 }

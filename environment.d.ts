@@ -3,6 +3,6 @@ interface EnvironmentVariables {
   readonly PORT: string
 }
 
-declare namespace NodeJS {
+declare module NodeJS {
   type ProcessEnv = EnvironmentVariables
 }

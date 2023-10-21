@@ -21,7 +21,7 @@ WORKDIR /app
 
 COPY --from=builder /app/dist/index.cjs dist/index.cjs
 
-CMD [ "node", "./dist/index.cjs" ]
+CMD ["node", "./dist/index.cjs"]
 
 # # If you want to use a distroless image, see example:
 # # https://gist.github.com/o-az/634545376fd13fc1fc882cc4a664289c

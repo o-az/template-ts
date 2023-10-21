@@ -7,10 +7,10 @@ export default defineConfig({
   // https://tsup.egoist.dev/#inject-cjs-and-esm-shims
   shims: true,
   // log build progress. Safe to disable
-  silent: false,
+  silent: process.env.NODE_ENV === 'development',
   // if you plan to build the project then run it in a container, minifying is a good idea
   // minify: true,
-  format: ['esm', 'cjs'],
+  format: process.env.NODE_ENV === 'development' ? ['esm'] : ['esm', 'cjs'],
   // you can have multiple entry files. See https://tsup.egoist.dev/#multiple-entrypoints
   entry: ['./src/index.ts'],
 })
