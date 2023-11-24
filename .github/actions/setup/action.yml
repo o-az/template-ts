@@ -15,13 +15,11 @@ runs:
   using: composite
   steps:
     - name: Setup pnpm
-      shell: bash
       uses: pnpm/action-setup@v2.4.0
       with:
         version: 'latest'
 
     - name: Setup Node.js
-      shell: bash
       uses: actions/setup-node@v4.0.0
       with:
         registry-url: ${{ inputs.registry-url }}
