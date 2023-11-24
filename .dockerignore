@@ -1,8 +1,0 @@
-*
-!src
-!scripts
-!package.json
-!tsup.config.ts
-!.npmrc
-!tsconfig.json
-!pnpm-lock.yaml

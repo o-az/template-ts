@@ -1,0 +1,34 @@
+name: 'Install Dependencies'
+description: 'setup runtimes'
+
+inputs:
+  registry-url:
+    description: 'The registry url (e.g. https://registry.npmjs.org)'
+    required: false
+    default: 'https://registry.npmjs.org'
+  skip-install:
+    description: 'Skip the install step'
+    required: false
+    default: 'false'
+
+runs:
+  using: composite
+  steps:
+    - name: Setup pnpm
+      shell: bash
+      uses: pnpm/action-setup@v2.4.0
+      with:
+        version: 'latest'
+
+    - name: Setup Node.js
+      shell: bash
+      uses: actions/setup-node@v4.0.0
+      with:
+        registry-url: ${{ inputs.registry-url }}
+        node-version: 'lts/*'
+        cache: 'pnpm'
+
+    - name: Install Dependencies
+      shell: bash
+      if: ${{ !inputs.skip-install }}
+      run: pnpm install --frozen-lockfile

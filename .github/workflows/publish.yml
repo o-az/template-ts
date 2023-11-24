@@ -1,4 +1,4 @@
-name: Publish Image & Package
+name: Publish Package
 
 permissions:
   contents: 'read'
@@ -9,153 +9,54 @@ on:
     tags:
       - 'v*'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # if you want to cancel runs when a new one is queued, set this to true
+  cancel-in-progress: false
+
 defaults:
   run:
     shell: bash
 
 env:
-  CI: true
-  DOCKER_BUILDKIT: 1
   # Enable debug logging for actions
   ACTIONS_RUNNER_DEBUG: true
 
 jobs:
-  test:
-    # run only on 'main' branch
-    if: github.ref == 'refs/heads/main'
+  checks:
+    if: ${{ !contains(github.event.head_commit.message, '[skip-checks]') }}
     name: 'Lint, Type Check, Test, & Build'
-    strategy:
-      matrix:
-        os: ['ubuntu-latest']
-        node_version: ['lts/*']
-        pnpm_version: ['latest']
-    runs-on: ${{ matrix.os }}
+    runs-on: ['ubuntu-latest']
     steps:
-      - name: Checkout
+      - name: 🔑 Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
+      - name: 'Install Dependencies'
+        uses: ./.github/actions/setup
+
+      - name: 'Lint / Build / Test'
+        uses: ./.github/actions/checks
         with:
-          version: ${{ matrix.pnpm_version }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3.8.1
-        with:
-          node-version: ${{ matrix.node_version }}
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Lint
+          skip-build: false
+          skip-test: false
+      
+      - name: 'Check Package Structure'
         run: |
-          pnpm format
-          pnpm lint
-
-      - name: Type Check
-        run: pnpm typecheck
-
-      - name: Test
-        run: pnpm test
-
-      - name: Build
-        run: pnpm build
-
-  docker:
-    # run only on 'main' branch
-    if: github.ref == 'refs/heads/main'
-    name: 'Publish Docker Image to Docker Hub and GitHub Container Registry'
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3.0.0
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.0.0
-
-      - name: Cache Docker layers
-        uses: actions/cache@v3.3.2
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3.0.0
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3.0.0
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata (tags, labels)
-        id: meta
-        uses: docker/metadata-action@v5.0.0
-        with:
-          images: ghcr.io/${{ github.repository }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Test build
-        uses: docker/build-push-action@v5.0.0
-        with:
-          context: .
-          load: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Build and push
-        uses: docker/build-push-action@v5.0.0
-        with:
-          context: .
-          push: true
-          platforms: linux/amd64,linux/arm64
-          labels: ${{ steps.meta.outputs.labels }}
-          tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-      - # Temp fix
-        # https://github.com/docker/build-push-action/issues/252
-        # https://github.com/moby/buildkit/issues/1896
-        name: Move cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          pnpm check-package
+        
 
   publish-npm:
-    # run only on 'main' branch
-    if: github.ref == 'refs/heads/main'
     name: 'Publish Package to npm Registry'
-    needs: [test]
+    needs: [checks]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 🔑 Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
+      - name: 'Install Dependencies'
+        uses: ./.github/actions/setup
         with:
-          version: 'latest'
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3.8.1
-        with:
-          node-version: 'lts/*'
-          cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
 
       - name: 'Publish'
         env:
@@ -167,29 +68,17 @@ jobs:
           pnpm publish --access public --registry https://registry.npmjs.org --no-git-checks
 
   publish-gpr:
-    # run only on 'main' branch
-    if: github.ref == 'refs/heads/main'
     name: 'Publish Package to GitHub Package Registry'
-    needs: [test]
+    needs: [checks]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: 🔑 Checkout
+        uses: actions/checkout@v4.1.1
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
+      - name: 'Install Dependencies'
+        uses: ./.github/actions/setup
         with:
-          version: 'latest'
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3.8.1
-        with:
-          node-version: 'lts/*'
-          cache: 'pnpm'
           registry-url: 'https://npm.pkg.github.com'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
 
       - name: Update ~/.npmrc
         run: |
@@ -206,17 +95,18 @@ jobs:
 
   # Generate GitHub Release Changelog
   Changelog:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 🔑 Checkout
         uses: actions/checkout@v4.1.1
         with:
           fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v3.8.1
+
+      - name: 'Install Dependencies'
+        uses: ./.github/actions/setup
         with:
-          node-version: 'lts/*'
+          skip-install: 'true'
+
       - name: Generate Changelog
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

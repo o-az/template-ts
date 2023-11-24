@@ -1,0 +1,42 @@
+name: Checks
+
+permissions:
+  contents: 'write'
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches:
+      # not 'main' branch
+      - '!main'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # if you want to cancel runs when a new one is queued, set this to true
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  # Enable debug logging for actions
+  ACTIONS_RUNNER_DEBUG: true
+
+jobs:
+  checks:
+    if: ${{ !contains(github.event.head_commit.message, '[skip-checks]') }}
+    runs-on: ['ubuntu-latest']
+    steps:
+      - name: 🔑 Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: 'Install Dependencies'
+        uses: ./.github/actions/setup
+
+      - name: 'Lint / Build / Test'
+        uses: ./.github/actions/checks
+        with:
+          skip-test: false
+          skip-build: false

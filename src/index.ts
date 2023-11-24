@@ -1,7 +1,7 @@
-import { server } from '#server'
+import { server } from '~/server.ts'
 
-export const { PORT = 3_004 } = process.env
+export const PORT = Number(process.env.PORT) ?? 3_004
 
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`)
-})
+console.log(`Server running at http://localhost:${PORT}`)
+
+server.listen(PORT)

@@ -13,7 +13,7 @@ _Requires __[Node.js LTS (v20 or later)](https://nodejs.org/en/blog/release/v20.
 - `pnpm` package manager
 - `vitest` test runner
 - `CommonJS` and `ESM` support
-- `ESLint` & `Prettier`
+- `Biome` for linting and formatting
 - CI with GitHub Actions
 - `Docker`-ready (see `Dockerfile`)
 - Publish to `npm` registry, GitHub Packages, Docker Hub and GitHub Container Registry with `pnpm` (see `publish.yml`)

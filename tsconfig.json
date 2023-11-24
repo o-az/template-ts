@@ -9,7 +9,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["ESNext"],
     "skipLibCheck": true,
     "alwaysStrict": true,
     "noImplicitAny": true,
@@ -19,6 +19,7 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
@@ -27,15 +28,10 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "#*": ["./src/*"]
+      "~/*": ["./src/*"],
     }
   },
   "include": ["src", "test"],
-  "files": [
-    "./environment.d.ts",
-    "./tsup.config.ts",
-    "./vitest.config.ts",
-    "./reset.d.ts"
-  ],
-  "exclude": ["node_modules", ".scratch", "dist"]
+  "files": ["environment.d.ts", "tsup.config.ts", "vitest.config.ts", "reset.d.ts", "biome.json"],
+  "exclude": ["node_modules", "dist"]
 }

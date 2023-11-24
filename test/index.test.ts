@@ -1,6 +1,6 @@
+import { PORT } from '~/index.ts'
+import { type Server, server } from '~/server.ts'
 import { expect, expectTypeOf, it, test } from 'vitest'
-import { PORT } from '#index'
-import { type Server, server } from '#server'
 
 test('PORT', () => {
   it('should be defined', () => {
