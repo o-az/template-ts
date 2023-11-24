@@ -15,7 +15,6 @@ _Requires __[Node.js LTS (v20 or later)](https://nodejs.org/en/blog/release/v20.
 - `CommonJS` and `ESM` support
 - `Biome` for linting and formatting
 - CI with GitHub Actions
-- `Docker`-ready (see `Dockerfile`)
 - Publish to `npm` registry, GitHub Packages, Docker Hub and GitHub Container Registry with `pnpm` (see `publish.yml`)
 
 ### - VSCode ready (see `.vscode`)
@@ -66,29 +65,7 @@ pnpm build && pnpm start
 node --import=tsx path/to/file.ts
 ```
 
-## Docker
-
-### Build image
-
-```sh
-docker build --file ./Dockerfile . --progress=plain --tag my_project
-```
-
-### Run container
-
-```sh
-docker run --publish 3004:3004 --rm -it --detach --name my_project my_project
-```
-
-### Open browser at <http://localhost:3004>
-
-### Get inside container
-
-```sh
-docker exec -it my_project /bin/sh
-```
-
-### Publish Package & Image
+### Publish Package
 
 _This will trigger publish workflow in GitHub Actions_
 
