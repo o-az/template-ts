@@ -172,4 +172,4 @@ jobs:
       - name: Generate Changelog
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx changelogithub
+        run: npx changelogen@latest
