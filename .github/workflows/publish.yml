@@ -3,6 +3,7 @@ name: Publish Package
 permissions:
   contents: 'read'
   packages: 'write'
+  id-token: 'write'
 
 on:
   workflow_dispatch:
@@ -75,6 +76,9 @@ jobs:
   publish-npm:
     name: 'Publish Package to npm Registry'
     needs: [checks]
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: 🔑 Checkout
@@ -108,6 +112,9 @@ jobs:
     name: 'Publish Package to GitHub Package Registry'
     needs: [checks]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: 🔑 Checkout
         uses: actions/checkout@v4.1.1
