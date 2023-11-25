@@ -28,5 +28,4 @@ runs:
 
     - name: Install Dependencies
       shell: bash
-      if: ${{ !inputs.skip-install }}
       run: pnpm install --frozen-lockfile

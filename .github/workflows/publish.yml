@@ -24,21 +24,50 @@ env:
 
 jobs:
   checks:
-    if: ${{ !contains(github.event.head_commit.message, '[skip-checks]') }}
-    name: 'Lint, Type Check, Test, & Build'
+    if: ${{ !contains(github.event.head_commit.message, '[skip-deploy]') }}
+    timeout-minutes: 3
     runs-on: ['ubuntu-latest']
     steps:
       - name: 🔑 Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: 'Install Dependencies'
-        uses: ./.github/actions/setup
-
-      - name: 'Lint / Build / Test'
-        uses: ./.github/actions/checks
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
         with:
-          skip-build: false
-          skip-test: false
+          version: 'latest'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.0
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        shell: bash
+        run: pnpm install --frozen-lockfile
+
+      - name: '🧹 Lint'
+        shell: bash
+        run: |
+          pnpm lint
+          # https://github.com/oxc-project/oxc
+          pnpmx dlx oxlint@latest . --fix --import-plugin --ignore-pattern="dist"
+
+      - name: '🧹 Format'
+        shell: bash
+        run: pnpm format
+
+      - name: '🧪 Typecheck'
+        shell: bash
+        run: pnpm typecheck
+
+      - name: '🔧 Build'
+        shell: bash
+        run: pnpm run build
+
+      - name: '🧪 Test'
+        shell: bash
+        run: pnpm test
       
       - name: 'Check Package Structure'
         run: |
@@ -53,10 +82,20 @@ jobs:
       - name: 🔑 Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: 'Install Dependencies'
-        uses: ./.github/actions/setup
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
         with:
+          version: 'latest'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.0
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
+      
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: 'Publish'
         env:
@@ -75,10 +114,20 @@ jobs:
       - name: 🔑 Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: 'Install Dependencies'
-        uses: ./.github/actions/setup
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
         with:
+          version: 'latest'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.0
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
           registry-url: 'https://npm.pkg.github.com'
+      
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Update ~/.npmrc
         run: |
@@ -95,6 +144,7 @@ jobs:
 
   # Generate GitHub Release Changelog
   Changelog:
+    needs: [checks, publish-npm, publish-gpr]
     runs-on: ubuntu-latest
     steps:
       - name: 🔑 Checkout
@@ -102,10 +152,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 'Install Dependencies'
-        uses: ./.github/actions/setup
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
         with:
-          skip-install: 'true'
+          version: 'latest'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.0
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Generate Changelog
         env:

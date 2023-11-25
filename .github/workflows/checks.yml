@@ -8,8 +8,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      # not 'main' branch
-      - '!main'
+      - '!v*'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -32,11 +31,40 @@ jobs:
       - name: 🔑 Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: 'Install Dependencies'
-        uses: ./.github/actions/setup
-
-      - name: 'Lint / Build / Test'
-        uses: ./.github/actions/checks
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
         with:
-          skip-test: false
-          skip-build: false
+          version: 'latest'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.0
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        shell: bash
+        run: pnpm install --frozen-lockfile
+
+      - name: '🧹 Lint'
+        shell: bash
+        run: |
+          pnpm lint
+          # https://github.com/oxc-project/oxc
+          pnpmx dlx oxlint@latest . --fix --import-plugin --ignore-pattern="dist"
+
+      - name: '🧹 Format'
+        shell: bash
+        run: pnpm format
+
+      - name: '🧪 Typecheck'
+        shell: bash
+        run: pnpm typecheck
+
+      - name: '🔧 Build'
+        shell: bash
+        run: pnpm run build
+
+      - name: '🧪 Test'
+        shell: bash
+        run: pnpm test
