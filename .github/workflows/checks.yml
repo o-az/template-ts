@@ -46,10 +46,7 @@ jobs:
 
       - name: '🧹 Lint'
         shell: bash
-        run: |
-          pnpm lint
-          # https://github.com/oxc-project/oxc
-          pnpm dlx oxlint@latest . --fix --import-plugin --ignore-pattern="dist"
+        run: pnpm lint
 
       - name: '🧹 Format'
         shell: bash
