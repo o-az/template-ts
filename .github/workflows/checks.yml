@@ -49,7 +49,7 @@ jobs:
         run: |
           pnpm lint
           # https://github.com/oxc-project/oxc
-          pnpmx dlx oxlint@latest . --fix --import-plugin --ignore-pattern="dist"
+          pnpm dlx oxlint@latest . --fix --import-plugin --ignore-pattern="dist"
 
       - name: '🧹 Format'
         shell: bash
