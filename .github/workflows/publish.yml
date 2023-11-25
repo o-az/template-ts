@@ -113,7 +113,7 @@ jobs:
 
   # Generate GitHub Release Changelog
   Changelog:
-    needs: [checks, publish-npm, publish-gpr]
+    needs: [checks, publish-npm]
     runs-on: ubuntu-latest
     steps:
       - name: 🔑 Checkout
