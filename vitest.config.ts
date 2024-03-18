@@ -1,14 +1,7 @@
 import { defineConfig } from 'vitest/config'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      /**
-       * Note how it's not identical to tsconfig.json paths.
-       * The below is equivalent to: `"#*": ["./src/*"]` in tsconfig.json
-       */
-      '~': './src'
-    }
-  },
-  test: {}
+  test: {},
+  plugins: [tsconfigPaths()]
 })

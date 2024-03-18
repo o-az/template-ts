@@ -1,8 +1,8 @@
 import { PORT } from '~/index.ts'
 import { type Server, server } from '~/server.ts'
-import { expect, expectTypeOf, it, test } from 'vitest'
+import { describe, expect, expectTypeOf, it } from 'vitest'
 
-test('PORT', () => {
+describe('PORT', () => {
   it('should be defined', () => {
     expect(PORT).toBeDefined()
   })
@@ -17,7 +17,7 @@ test('PORT', () => {
   })
 })
 
-test('server type', () => {
+describe('server type', () => {
   it('should be a Server', () => {
     expectTypeOf(server).toEqualTypeOf<Server>()
   })

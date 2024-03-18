@@ -19,7 +19,9 @@
       "default": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "node --import='tsx' ./src/index.ts",
     "start": "node --env-file=.env ./dist/index.js",
@@ -43,6 +45,7 @@
     "tsup": "^8.0.2",
     "tsx": "^4.7.1",
     "typescript": "^5.4.2",
+    "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^1.4.0"
   },
   "engines": {
@@ -50,6 +53,14 @@
   },
   "sideEffects": false,
   "author": "o-az (https://github.com/o-az)",
-  "keywords": ["typescript", "node.js", "esm", "cjs", "pnpm", "vitest", "template"],
+  "keywords": [
+    "typescript",
+    "node.js",
+    "esm",
+    "cjs",
+    "pnpm",
+    "vitest",
+    "template"
+  ],
   "license": "GPT-v3-or-later"
 }
