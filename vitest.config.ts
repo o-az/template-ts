@@ -10,7 +10,5 @@ export default defineConfig({
       '~': './src'
     }
   },
-  test: {
-    threads: false
-  }
+  test: {}
 })
