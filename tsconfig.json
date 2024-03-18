@@ -28,7 +28,7 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"],
+      "~/*": ["./src/*"]
     }
   },
   "include": ["src", "test"],

@@ -6,9 +6,9 @@
   "typescript.preferences.preferTypeOnlyAutoImports": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports.biome": true,
-    "source.fixAll.biome": true,
-    "quickfix.biome": true
+    "source.organizeImports.biome": "always",
+    "source.fixAll.biome": "always",
+    "quickfix.biome": "always"
   },
   "editor.defaultFormatter": "biomejs.biome",
   "[typescript]": { "editor.defaultFormatter": "biomejs.biome" },

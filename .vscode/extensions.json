@@ -1,5 +1,10 @@
 {
-  "recommendations": ["mikestead.dotenv", "biomejs.biome", "EditorConfig.EditorConfig"],
+  "recommendations": [
+    //
+    "mikestead.dotenv",
+    "biomejs.biome",
+    "EditorConfig.EditorConfig"
+  ],
   "unwantedRecommendations": [
     // we use Biome for linting and formatting so we don't need these
     "dbaeumer.vscode-eslint",

@@ -1,22 +1,12 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.3.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
   "vcs": {
     "root": ".",
     "enabled": true,
     "clientKind": "git"
   },
   "files": {
-    "include": [
-      "./**/*.ts",
-      "./**/*.js",
-      "./**/*.cjs",
-      "./**/*.mjs",
-      "./**/*.jsx",
-      "./**/*.tsx",
-      "./**/*.d.ts",
-      "./**/*.json",
-      "./**/*.jsonc"
-    ],
+    "include": ["*.ts", "*.js", "*.cjs", "*.mjs", "*.jsx", "*.tsx", "*.d.ts", "*.json", "*.jsonc"],
     "ignoreUnknown": true,
     "ignore": ["node_modules", "dist"]
   },
@@ -29,17 +19,7 @@
     "indentWidth": 2,
     "indentStyle": "space",
     "formatWithErrors": true,
-    "include": [
-      "./**/*.ts",
-      "./**/*.js",
-      "./**/*.jsx",
-      "./**/*.cjs",
-      "./**/*.mjs",
-      "./**/*.tsx",
-      "./**/*.d.ts",
-      "./**/*.json",
-      "./**/*.jsonc"
-    ],
+    "include": ["*.ts", "*.js", "*.jsx", "*.cjs", "*.mjs", "*.tsx", "*.d.ts", "*.json", "*.jsonc"],
     "ignore": ["node_modules", "dist", "_"]
   },
   "linter": {
@@ -53,8 +33,10 @@
       },
       "nursery": {
         "all": true,
-        "noUnusedImports": "off",
-        "useImportRestrictions": "off"
+        "noConsole": "off",
+        "noNodejsModules": "off",
+        "useImportRestrictions": "off",
+        "noUndeclaredDependencies": "off"
       },
       "complexity": {
         "useLiteralKeys": "off",
