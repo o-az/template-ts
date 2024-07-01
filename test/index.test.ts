@@ -1,5 +1,5 @@
-import { PORT } from '~/index.ts'
-import { type Server, server } from '~/server.ts'
+import { PORT } from '#index.ts'
+import { type Server, server } from '#server.ts'
 import { describe, expect, expectTypeOf, it } from 'vitest'
 
 describe('PORT', () => {

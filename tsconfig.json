@@ -26,10 +26,7 @@
     "forceConsistentCasingInFileNames": true,
     "noPropertyAccessFromIndexSignature": true,
     "types": ["node"],
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "baseUrl": "."
   },
   "include": ["src", "test"],
   "files": ["environment.d.ts", "tsup.config.ts", "vitest.config.ts", "reset.d.ts", "biome.json"],

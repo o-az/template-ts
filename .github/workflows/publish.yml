@@ -31,15 +31,15 @@ jobs:
     runs-on: ['ubuntu-latest']
     steps:
       - name: 🔑 Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
+        uses: pnpm/action-setup@v4
         with:
           version: 'latest'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.0.0
+        uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
@@ -67,11 +67,11 @@ jobs:
       - name: '🧪 Test'
         shell: bash
         run: pnpm test
-      
+
       - name: 'Check Package Structure'
         run: |
           pnpm check-package
-        
+
 
   publish-npm:
     name: 'Publish Package to npm Registry'
@@ -83,20 +83,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔑 Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
+        uses: pnpm/action-setup@v4
         with:
           version: 'latest'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.0.0
+        uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
-      
+
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
@@ -122,20 +122,20 @@ jobs:
       id-token: write
     steps:
       - name: 🔑 Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
+        uses: pnpm/action-setup@v4
         with:
           version: 'latest'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.0.0
+        uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
           registry-url: 'https://npm.pkg.github.com'
-      
+
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
@@ -165,7 +165,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔑 Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 

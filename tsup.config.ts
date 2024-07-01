@@ -18,14 +18,13 @@ export default defineConfig({
   silent: process.env.NODE_ENV === 'development',
   // if you plan to build the project then run it in a container, minifying is a good idea
   // minify: true,
-  format: process.env.NODE_ENV === 'development' ? ['esm'] : ['esm', 'cjs'],
+  format: ['esm'],
   // you can have multiple entry files. See https://tsup.egoist.dev/#multiple-entrypoints
-  entry: ['./src/index.ts']
-
+  entry: ['./src/index.ts'],
   /**
    * Depending on your target environment (node/browser/neutral), you may need to set the target and platform option.
    * @see https://tsup.egoist.dev/#target-environment
    */
-  // target: 'node20',
-  // platform: 'node'
+  target: 'node20',
+  platform: 'node'
 })

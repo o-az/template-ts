@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
   "vcs": {
     "root": ".",
     "enabled": true,
@@ -24,9 +24,11 @@
   },
   "linter": {
     "enabled": true,
+    "include": ["*.ts", "*.js", "*.cjs", "*.mjs", "*.jsx", "*.tsx", "*.d.ts", "*.json", "*.jsonc"],
     "rules": {
       "all": true,
       "style": {
+        "noDefaultExport": "off",
         "useBlockStatements": "off",
         "useSelfClosingElements": "off",
         "noUnusedTemplateLiteral": "off"
@@ -34,7 +36,6 @@
       "nursery": {
         "all": true,
         "noConsole": "off",
-        "noNodejsModules": "off",
         "useImportRestrictions": "off",
         "noUndeclaredDependencies": "off"
       },
@@ -43,10 +44,12 @@
         "noUselessEmptyExport": "off"
       },
       "correctness": {
+        "noNodejsModules": "off",
         "noUndeclaredVariables": "off"
       },
       "suspicious": {
         "noRedeclare": "off",
+        "noConsoleLog": "off",
         "noExplicitAny": "off",
         "noEmptyInterface": "off"
       }
@@ -63,6 +66,7 @@
     }
   },
   "javascript": {
+    "globals": ["NodeJS"],
     "parser": {
       "unsafeParameterDecoratorsEnabled": true
     },
@@ -72,11 +76,24 @@
       "indentWidth": 2,
       "indentStyle": "space",
       "quoteStyle": "single",
-      "trailingComma": "none",
+      "trailingCommas": "none",
       "semicolons": "asNeeded",
       "jsxQuoteStyle": "single",
       "quoteProperties": "asNeeded",
       "arrowParentheses": "asNeeded"
     }
-  }
+  },
+  "overrides": [
+    {
+      "include": ["environment.d.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noNamespace": "off",
+            "useNamingConvention": "off"
+          }
+        }
+      }
+    }
+  ]
 }
