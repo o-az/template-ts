@@ -1,6 +1,6 @@
-import { server } from '#server.ts'
+import { server } from './server'
 
-export const PORT = Number(process.env.PORT) || 3_004
+export const PORT = Number(process.env['PORT']) || 3_004
 
 console.info(`Server running at http://127.0.0.1:${PORT}`)
 

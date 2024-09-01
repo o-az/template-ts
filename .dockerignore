@@ -1,0 +1,9 @@
+# ignore everything
+*
+
+# except
+!src
+!package.json
+!pnpm-lock.yaml
+
+!tsup.config.ts
