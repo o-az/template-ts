@@ -2,11 +2,11 @@ import http from 'node:http'
 import https from 'node:https'
 import crypto from 'node:crypto'
 
-export const PORT = Number(process.env['PORT']) || 3_004
+export const PORT: number = Number(process.env['PORT']) || 3_004
 
 export type Server = http.Server<typeof http.IncomingMessage, typeof http.ServerResponse>
 
-export const server = http.createServer()
+export const server: Server = http.createServer()
 
 server.on('request', (request, response) => {
   switch (request.url) {

@@ -16,37 +16,35 @@
     "./package.json": "./package.json"
   },
   "files": ["dist", "package.json", "README.md", "LICENSE"],
-  "imports": {
-    "#*": "./src/*"
-  },
   "scripts": {
-    "dev": "tsup --config='tsup.config.ts' --watch --onSuccess='node --env-file=.env ./dist/index.js'",
-    "start": "node --env-file=.env ./dist/index.js",
-    "build": "tsup --config=tsup.config.ts",
+    "dev": "node --import='tsdown' --watch --env-file-if-exists='.env' ./src/index.ts",
+    "start": "node --env-file-if-exists='.env' ./dist/index.js",
+    "build": "tsdown --config='tsdown.config.ts'",
     "test": "vitest --run",
     "lint": "biome check . --write",
     "format": "biome format . --write",
+    "check": "biome check . --write --unsafe",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "check-package": "pnpm dlx publint@latest --strict && pnpm exec attw --pack --ignore-rules cjs-resolves-to-esm",
-    "release": "npm_config_yes=true pnpm dlx bumpp package.json --commit --push --tag",
+    "release": "npm_config_yes='true' pnpm dlx bumpp package.json --commit --push --tag",
     "prerelease": "pnpm build && publint && attw --pack",
     "prepublishOnly": "pnpm build",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.16.4",
-    "@biomejs/biome": "^1.9.3",
+    "@arethetypeswrong/cli": "0.17.4",
+    "@biomejs/biome": "1.9.4",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/node": "^22.7.4",
-    "publint": "^0.2.11",
-    "tsup": "^8.3.0",
-    "tsx": "^4.19.1",
-    "typescript": "^5.6.2",
-    "vite-tsconfig-paths": "^5.0.1",
-    "vitest": "^2.1.1"
+    "@types/node": "22.14.1",
+    "publint": "^0.3.12",
+    "tsdown": "0.7.5",
+    "tsx": "4.19.3",
+    "typescript": "5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.1.1"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.5"
   },
   "sideEffects": false,
   "author": "o-az (https://github.com/o-az)",

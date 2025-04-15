@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "vcs": {
     "root": ".",
     "enabled": true,
@@ -30,6 +30,7 @@
       "style": {
         "noDefaultExport": "off",
         "useBlockStatements": "off",
+        "useNamingConvention": "off",
         "useSelfClosingElements": "off",
         "noUnusedTemplateLiteral": "off"
       },

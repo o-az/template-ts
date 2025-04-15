@@ -13,6 +13,7 @@ _Requires __[Node.js LTS (v20 or later)](https://nodejs.org/en/blog/release/v20.
 - `pnpm` package manager
 - `vitest` test runner
 - `CommonJS` and `ESM` support
+- [`tsdown`](https://github.com/rolldown/tsdown) for building (powered by [rolldown](https://github.com/rolldown/rolldown))
 - `Biome` for linting and formatting
 - CI with GitHub Actions
 - Publish to `npm` registry, GitHub Packages, Docker Hub and GitHub Container Registry with `pnpm` (see `publish.yml`)
@@ -26,7 +27,8 @@ _Requires __[Node.js LTS (v20 or later)](https://nodejs.org/en/blog/release/v20.
 ### Clone repository
 
 ```sh
-git clone https://github.com/o-az/template-ts.git && cd template-ts
+## using github cli
+gh repo clone o-az/template-ts && cd template-ts
 ```
 
 ### Install dependencies

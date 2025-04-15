@@ -18,6 +18,7 @@
     "isolatedModules": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
+    "erasableSyntaxOnly": true,
     "verbatimModuleSyntax": true,
     "allowImportingTsExtensions": true,
     "noFallthroughCasesInSwitch": true,
@@ -29,6 +30,6 @@
     "baseUrl": "."
   },
   "include": ["src", "test"],
-  "files": ["environment.d.ts", "tsup.config.ts", "vitest.config.ts", "reset.d.ts", "biome.json"],
+  "files": ["environment.d.ts", "tsdown.config.ts", "vitest.config.ts", "reset.d.ts", "biome.json"],
   "exclude": ["node_modules", "dist"]
 }

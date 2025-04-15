@@ -4,6 +4,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "npm.packageManager": "pnpm",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports.biome": "always",
