@@ -54,4 +54,4 @@ jobs:
 
       - name: '🧪 Test'
         shell: bash
-        run: pnpm vitest --run --reporter='github'
+        run: pnpm vitest --run --reporter='github-actions'

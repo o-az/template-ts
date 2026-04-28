@@ -58,7 +58,7 @@ jobs:
 
       - name: '🧪 Test'
         shell: bash
-        run: pnpm test
+        run: pnpm vitest --run --reporter='github-actions'
 
       - name: 'Check Package Structure'
         run: |
