@@ -49,6 +49,8 @@
     "release": "npm_config_yes='true' pnpm dlx bumpp package.json --commit --push --tag",
     "prerelease": "pnpm build && publint && attw --pack",
     "prepublishOnly": "pnpm build",
+    "docker:build": "docker buildx build . --rm  --no-cache --file Dockerfile --tag template-ts",
+    "docker:run": "docker run --rm --env PORT=3003 --publish 3003:3003 template-ts:latest",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
