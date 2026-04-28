@@ -59,11 +59,11 @@ jobs:
 
       - name: '🧪 Typecheck'
         shell: bash
-        run: pnpm typecheck
+        run: pnpm check:types
 
       - name: '🔧 Build'
         shell: bash
-        run: pnpm run build
+        run: pnpm tsdown --config='tsdown.config.ts'
 
       - name: '🧪 Test'
         shell: bash
@@ -101,7 +101,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        run: pnpm tsdown --config='tsdown.config.ts'
 
       - name: 'Publish'
         env:
@@ -140,7 +140,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        run: pnpm tsdown --config='tsdown.config.ts'
 
       - name: Update ~/.npmrc
         run: |
