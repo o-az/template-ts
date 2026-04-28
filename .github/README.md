@@ -63,7 +63,7 @@ pnpm build && pnpm start
 ### to run a one-off TypeScript file
 
 ```sh
-node --import=tsx path/to/file.ts
+node path/to/file.ts
 ```
 
 ### Publish Package
