@@ -20,6 +20,7 @@ defaults:
 env:
   # Enable debug logging for actions
   ACTIONS_RUNNER_DEBUG: true
+  NODE_OPTIONS: '--disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning'
 
 jobs:
   checks:
@@ -27,39 +28,30 @@ jobs:
     runs-on: ['ubuntu-latest']
     steps:
       - name: 🔑 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - name: '📦 Install Dependencies'
+        uses: ./.github/actions/install-dependencies
         with:
-          version: 'latest'
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/*'
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        shell: bash
-        run: pnpm install --frozen-lockfile
-
-      - name: '🧹 Lint'
-        shell: bash
-        run: pnpm lint
+          frozen-lockfile: true
+          registry-url: 'https://registry.npmjs.org'
 
       - name: '🧹 Format'
         shell: bash
-        run: pnpm format
+        run: pnpm oxfmt --config='oxfmt.config.ts' --check
+
+      - name: '🧹 Lint'
+        shell: bash
+        run: pnpm oxlint --config='oxlint.config.ts' --max-warnings=0 --format='github' --report-unused-disable-directives
 
       - name: '🧪 Typecheck'
         shell: bash
-        run: pnpm typecheck
+        run: pnpm tsgo --project 'tsconfig.json' --noEmit
 
       - name: '🔧 Build'
         shell: bash
-        run: pnpm run build
+        run: pnpm tsdown --config='tsdown.config.ts'
 
       - name: '🧪 Test'
         shell: bash
-        run: pnpm test
+        run: pnpm vitest --run --reporter='github-actions'

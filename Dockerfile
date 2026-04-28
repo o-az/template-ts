@@ -39,4 +39,4 @@ ENV NODE_ENV=${NODE_ENV}
 
 EXPOSE $PORT
 
-CMD ["node", "/usr/src/app/dist/index.js"]
+CMD ["node", "/usr/src/app/dist/index.mjs"]
