@@ -33,6 +33,12 @@ export default defineConfig({
       options: {
         printWidth: 1
       }
+    },
+    {
+      files: ['*.yml', '*.yaml'],
+      options: {
+        printWidth: 120
+      }
     }
   ]
 })
