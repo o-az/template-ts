@@ -18,12 +18,13 @@ runs:
       shell: bash
       id: pnpm-version
       run: |
-        node --eval 'console.log(require("./package.json").packageManager.split("@").at(-1))' >> $GITHUB_OUTPUT
+        VERSION="$(node --eval "process.stdout.write(require('./package.json').packageManager.split('@').at(-1))")"
+        echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
     - name: Set up pnpm
       uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
       with:
-        version: 'latest'
+        version: ${{ steps.pnpm-version.outputs.version }}
 
     - name: Set up Node.js
       uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
