@@ -1,5 +1,2 @@
-onlyBuiltDependencies:
-  - '@biomejs/biome'
-
 nodeOptions: '--disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning'
 shellEmulator: true
