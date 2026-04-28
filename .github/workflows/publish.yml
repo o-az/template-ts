@@ -23,6 +23,7 @@ defaults:
 env:
   # Enable debug logging for actions
   ACTIONS_RUNNER_DEBUG: true
+  NODE_OPTIONS: '--disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning'
 
 jobs:
   checks:
@@ -31,15 +32,15 @@ jobs:
     runs-on: ['ubuntu-latest']
     steps:
       - name: 🔑 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
         with:
           version: 'latest'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
@@ -72,7 +73,6 @@ jobs:
         run: |
           pnpm check-package
 
-
   publish-npm:
     name: 'Publish Package to npm Registry'
     needs: [checks]
@@ -83,15 +83,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔑 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
         with:
           version: 'latest'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
@@ -122,15 +122,15 @@ jobs:
       id-token: write
     steps:
       - name: 🔑 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
         with:
           version: 'latest'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
@@ -165,7 +165,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔑 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
 

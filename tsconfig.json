@@ -9,7 +9,9 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "lib": ["ESNext"],
+    "lib": [
+      "ESNext"
+    ],
     "skipLibCheck": true,
     "alwaysStrict": true,
     "noImplicitAny": true,
@@ -25,11 +27,28 @@
     "useUnknownInCatchVariables": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "resolvePackageJsonImports": true,
+    "resolvePackageJsonExports": true,
     "noPropertyAccessFromIndexSignature": true,
-    "types": ["node"],
-    "baseUrl": "."
+    "types": [
+      "node"
+    ]
   },
-  "include": ["src", "test"],
-  "files": ["environment.d.ts", "tsdown.config.ts", "vitest.config.ts", "reset.d.ts", "biome.json"],
-  "exclude": ["node_modules", "dist"]
+  "files": [
+    "env.d.ts",
+    "reset.d.ts",
+    "oxfmt.config.ts",
+    "oxlint.config.ts",
+    "tsdown.config.ts",
+    "vitest.config.ts"
+  ],
+  "include": [
+    "src",
+    "test"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/_/**"
+  ]
 }

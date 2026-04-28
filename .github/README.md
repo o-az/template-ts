@@ -2,8 +2,7 @@ _NOTE: You are welcome to ask any questions if anything is unclear. Also feel fr
 
 # TypeScript / Node.js Template
 
-_Requires __[Node.js LTS (v20 or later)](https://nodejs.org/en/blog/release/v20.8.1)__ and
-**[pnpm __v8__ or higher](https://pnpm.io/installation)**_
+_Requires **[Node.js LTS (v24 or later)](https://nodejs.org/en/blog/release/v24.15.0)** and **[pnpm **v10** or higher](https://pnpm.io/installation)**_
 
 ---
 
@@ -12,9 +11,9 @@ _Requires __[Node.js LTS (v20 or later)](https://nodejs.org/en/blog/release/v20.
 - `TypeScript`
 - `pnpm` package manager
 - `vitest` test runner
-- `CommonJS` and `ESM` support
+- `ESM` support
 - [`tsdown`](https://github.com/rolldown/tsdown) for building (powered by [rolldown](https://github.com/rolldown/rolldown))
-- `Biome` for linting and formatting
+- `oxfmt` / `oxlint` for linting and formatting
 - CI with GitHub Actions
 - Publish to `npm` registry, GitHub Packages, Docker Hub and GitHub Container Registry with `pnpm` (see `publish.yml`)
 
