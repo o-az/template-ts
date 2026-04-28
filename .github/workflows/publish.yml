@@ -40,17 +40,17 @@ jobs:
           frozen-lockfile: true
           registry-url: 'https://registry.npmjs.org'
 
-      - name: '🧹 Lint'
-        shell: bash
-        run: pnpm lint
-
       - name: '🧹 Format'
         shell: bash
-        run: pnpm format
+        run: pnpm oxfmt --config='oxfmt.config.ts' --check
+
+      - name: '🧹 Lint'
+        shell: bash
+        run: pnpm oxlint --config='oxlint.config.ts' --max-warnings=0 --format='github' --report-unused-disable-directives
 
       - name: '🧪 Typecheck'
         shell: bash
-        run: pnpm check:types
+        run: pnpm tsgo --project 'tsconfig.json' --noEmit
 
       - name: '🔧 Build'
         shell: bash
